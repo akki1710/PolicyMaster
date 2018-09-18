@@ -39,7 +39,7 @@ public class main {
 	
 	
 	public static void main(String[] args) throws Exception {
-		/*hiString a="akash"hi;
+		/*hiString a="akash"hi  ;
 		StringBuilder c=new StringBuilder("akash");
 		StringBuffer d=new StringBuffer("akash");
 		System.out.println(a+"chauhan");
