@@ -9,7 +9,10 @@
 <body>
 <form action="Rel_Pol_Status" method="post">
 PolicyNumber: <%= (String) session.getAttribute("policy_num")%><br>
-PropasalNumber: <%= (String) session.getAttribute("rel_proposal_num")%><br>
+<% if(session!=null){
+	session.removeAttribute("policy_num");
+	}%>
+
 </form>
 <form action="Rel_Pol_Status1" method="post">
 <input type="submit" value="Click here for Policy URL"> 

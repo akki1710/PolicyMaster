@@ -47,7 +47,6 @@ public class HealthSer extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	@SuppressWarnings({ "static-access", "unused" })
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter(); 
 		HttpSession session=request.getSession();	
@@ -60,9 +59,6 @@ public class HealthSer extends HttpServlet {
 		 
 		 String member_disease="";
 		 String[] a=request.getParameterValues("member_disease");
-
-		 
-		 
 		 try {
        if(health_policy.equals("Carefreedom")) {
     	   	
@@ -74,14 +70,16 @@ public class HealthSer extends HttpServlet {
     	   response.sendRedirect("member_details.jsp");
     	   
        }
-       out.close();
+       
        if(a!=null) {
+    	   response.sendRedirect("Religare");
     	   for(int i=0;i<a.length;i++)
            {
     		   member_disease+=a[i]+",";
            }
     	   System.out.println("member_disease: "+member_disease);
-    	 	response.sendRedirect("Religare");
+    	   session.setAttribute("member_disease", member_disease);
+    	 	
        }
        else {
      	   RequestDispatcher rd=request.getRequestDispatcher("disease.jsp"); 
@@ -93,7 +91,7 @@ public class HealthSer extends HttpServlet {
      	   
         }
      
-       
+       out.close();
 	} catch (NullPointerException e) {
 		e.printStackTrace();
 	}

@@ -513,10 +513,12 @@ public class apollo extends HttpServlet {
 		} finally {
 
 		}
+		
 		if(session!=null) {
-			session.removeAttribute("app");
+			session.removeAttribute("ap");
 			session.removeAttribute("members");
 		}
+		return;
 	}
 
 	public static void apollo_payment(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -634,6 +636,7 @@ public class apollo extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} 
+		return;
 	}
 
 	/**

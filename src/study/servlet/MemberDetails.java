@@ -47,6 +47,7 @@ public class MemberDetails extends HttpServlet {
 				 //PrintWriter pw = response.getWriter();
 		 HttpSession session=request.getSession();	
 		 String health_policy=(String) session.getAttribute("health_policy");
+		 String disease=(String) session.getAttribute("member_disease");
 		 
 		 String salutation=request.getParameter("salutation");
 		 String fullname=request.getParameter("fullname");
@@ -108,6 +109,7 @@ public class MemberDetails extends HttpServlet {
 	    	   app.setCity(city);
 	    	   app.setState(state);
 	    	   app.setPincode(pincode);
+	    	   app.setDisease(disease);
 	    	   app.setNomsalutation(nomsalutation);
 	    	   app.setNomname(nomname);
 	    	   app.setNomrelation(nomrelation);
@@ -120,14 +122,26 @@ public class MemberDetails extends HttpServlet {
 	    	   app.setNomstate(nomstate);
 	    	   app.setNompincode(nompincode);
 	    	   
+	    	   
 	    	   session.setAttribute("app", app);
+	    	   if(health_policy.equals("Carefreedom")) {
+
+		    	   response.sendRedirect("Rel_Pay.jsp");
+		    	   study.religare.Religare.religare_premium(request, response);
+	    	   }
+	    	   else if(health_policy.equals("Optima_Restore")) {
+	    		   response.sendRedirect("diseasepaycart.jsp");
+	    		   Apollo.apollo.apollo_proposal(request, response);
+		    	   Apollo.apollo.apollo_payment(request, response);
+		    	   
+	    	   }
+	    	   if(session!=null) {
+	    		   session.removeAttribute("member_disease");
+	    		   session.removeAttribute("rel_proposal_num");
+	    		   session.removeAttribute("rel_premium");
+	    		   session.removeAttribute("b");
+	    	   }
 	    	   
-	    	   
-	    	   study.religare.Religare.religare_premium(request, response);
-	    	   Apollo.apollo.apollo_proposal(request, response);
-	    	   Apollo.apollo.apollo_payment(request, response);
-	    	   String PaymentUrl=(String) session.getAttribute("PaymentUrl");
-	    	   response.sendRedirect("diseasepaycart.jsp");
 	    	   return;
 	    	   //pw.close();
 	}

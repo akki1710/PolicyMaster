@@ -70,13 +70,13 @@ public class Rel_Pol_Status extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 PrintWriter pw = response.getWriter();
 		 HttpSession session=request.getSession(); 
-		 String rel_proposal_num=(String) session.getAttribute("rel_proposal_num");
-		 String rel_premium=(String) session.getAttribute("rel_premium");
-		 String firstName=(String) session.getAttribute("firstName");
-		 String lastName=(String) session.getAttribute("lastName");
-		 String FullName=firstName+" "+lastName;
-		 String Email=(String) session.getAttribute("email");
-		 String Mobile=(String) session.getAttribute("phoneno");
+		 String rel_proposal_num=(String) session.getAttribute("rel_two_proposal_num");
+		 System.out.println("rel_proposal_num in rel_pol_status: "+rel_proposal_num);
+		 String rel_premium=(String) session.getAttribute("rel_two_premium");
+		 apollo_proposal_pojo app = (apollo_proposal_pojo) session.getAttribute("app");
+		 String FullName=app.getFullname();
+		 String Email=app.getEmail();
+		 String Mobile=app.getMobile();
 		 
 		 intSetPolicyStatusIO intSetPolicyStatusIO=new intSetPolicyStatusIO();
 		 intSetPolicyStatusIO.setProposalNum(rel_proposal_num);
@@ -185,11 +185,9 @@ public class Rel_Pol_Status extends HttpServlet {
 			}
 		 if(session!=null) {
 			 session.removeAttribute("health_policy");
-			 session.removeAttribute("rel_premium");
-			 session.removeAttribute("firstName");
-			 session.removeAttribute("lastName");
-			 session.removeAttribute("email");
-			 session.removeAttribute("phoneno");
+			 session.removeAttribute("rel_two_premium");
+			 session.removeAttribute("app");
+			 session.removeAttribute("rel_two_proposal_num");
 		 }
 	}
 	private static Document parseXmlFile(String in) {

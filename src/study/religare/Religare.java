@@ -176,9 +176,9 @@ public class Religare extends HttpServlet {
 				partyIdentityDOList1.setIdentityTypeCd("");
 				
 				partyQuestionDOList partyQuestionDOList1=new partyQuestionDOList();
-				partyQuestionDOList1.setQuestionCd("H101");
-				partyQuestionDOList1.setQuestionSetCd("HEDCFLEAFONE");
-				partyQuestionDOList1.setResponse("NO");
+				partyQuestionDOList1.setQuestionCd("");
+				partyQuestionDOList1.setQuestionSetCd("");
+				partyQuestionDOList1.setResponse("");
 				
 				partyDOList partyDOList1=new partyDOList();
 				partyDOList1.setBirthDt(birthDt);
@@ -308,6 +308,7 @@ public class Religare extends HttpServlet {
 		String city = app.getCity();
 		String state = app.getState();
 		String pincode = app.getPincode();
+		String disease=app.getDisease();
 		String nomsalutation=app.getNomsalutation();
 		String nomname=app.getNomname();
 		String nomrelation=app.getNomrelation();
@@ -362,6 +363,14 @@ public class Religare extends HttpServlet {
 	        String nomprefix[]=m.TitleReligare(nomsalutation);
 	        String nomtitle=nomprefix[0];
 	        String nomgender=nomprefix[1];
+	        
+	        if(disease==null) {
+	        	disease="";
+	        }
+	        String [] diseases=m.religare_disease(disease);
+	        String questionCd=diseases[0];
+	        String questionSetCd=diseases[1];
+	        String response_disease=diseases[2];
 		 
 		 partyAddressDOList partyAddressDOList=new partyAddressDOList();
 		 	partyAddressDOList.setAddressLine1Lang1(address);
@@ -395,9 +404,9 @@ public class Religare extends HttpServlet {
 			partyIdentityDOList.setIdentityTypeCd("");
 			
 			partyQuestionDOList partyQuestionDOList=new partyQuestionDOList();
-			partyQuestionDOList.setQuestionCd("");
-			partyQuestionDOList.setQuestionSetCd("");
-			partyQuestionDOList.setResponse("");
+			partyQuestionDOList.setQuestionCd(questionCd);
+			partyQuestionDOList.setQuestionSetCd(questionSetCd);
+			partyQuestionDOList.setResponse(response_disease);
 			
 			partyDOList partyDOList=new partyDOList();
 			partyDOList.setBirthDt(dob);

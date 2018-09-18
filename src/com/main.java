@@ -33,7 +33,10 @@ import com.poiji.bind.Poiji;
 import study.db.Db;
 
 public class main {
+	
+	
 	private String strVehicleCode;
+	
 	
 	public static void main(String[] args) throws Exception {
 		/*hiString a="akash"hi;
@@ -187,27 +190,7 @@ public class main {
         String a=abc(sheet, cellContent);
         System.out.println(a);*/
 	}
-
 	
-	public String ifCreta(String Model,String FuelType) {
-		if(Model.equals("CRETA")) {
-			strVehicleCode="UL7951";
-		return strVehicleCode;
-		}
-		 else if(Model.equals("ACCENT") && FuelType.equals("Petrol")) {
-			 strVehicleCode="UL11281";
-	        	return strVehicleCode;
-	        }
-		 else if(Model.equals("ACCENT") && FuelType.equals("CNG")) {
-				strVehicleCode="UL11352";
-        	return strVehicleCode;
-        }
-		 else if(Model.equals("7 SERIES 730 LD SIGNATURE") && FuelType.equals("DIESEL")) {
-			 strVehicleCode="UL9432";
-			 return strVehicleCode;
-		 }
-		return null;
-	}
 	public String ifModel(String Model,String FuelType) {
 		String VEH_CODE = null;
 		try {
@@ -391,28 +374,65 @@ public class main {
 	//Religare
 	
 	public String[] TitleReligare(String title) {
+		String g[]=new String[2];
 		if(title.equals("Mr.")) {
-			String g[]=new String[2];
 			g[0]="MR";
 			g[1]="MALE";
 			
 			return g;
 		}
 		else if(title.equals("Mrs.")) {
-			String g[]=new String[2];
 			g[0]="MS";
 			g[1]="FEMALE";
 			
 			return g;
 		}
 		else if(title.equals("Miss.")) {
-			String g[]=new String[2];
 			g[0]="MS";
 			g[1]="FEMALE";
 			
 			return g;
 		}
 		return null;
+		
+	}
+	public String[] religare_disease(String disease) {
+		String [] diseases=new String[3];
+		if(disease.equals("asthma,")) {
+			diseases[0]="H104";
+			diseases[1]="HEDCFLEAFFOUR";
+			diseases[2]="YES";
+			return diseases;
+		}
+		else if(disease.equals("diabetes,")) {
+			diseases[0]="H106";
+			diseases[1]="HEDCFLEAFSIX";
+			diseases[2]="YES";
+			return diseases;
+		}
+		else if(disease.equals("heartailments,")) {
+			diseases[0]="H102";
+			diseases[1]="HEDCFLEAFTWO";
+			diseases[2]="YES";
+			return diseases;
+		}
+		else if(disease.equals("hypertension,")) {
+			diseases[0]="H103";
+			diseases[1]="HEDCFLEAFTHREE";
+			diseases[2]="YES";
+			return diseases;
+		}
+		else if(disease.equals("thyroid,")) {
+			diseases[0]="H105";
+			diseases[1]="HEDCFLEAFFIVE";
+			diseases[2]="YES";
+			return diseases;
+		} else {
+			diseases[0]="";
+			diseases[1]="";
+			diseases[2]="";
+			return diseases;
+		}
 		
 	}
 	//---------------------apollo----------------------

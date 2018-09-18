@@ -15,6 +15,7 @@ public class apollo_proposal_pojo {
 	private String city;
 	private String state;
 	private String pincode;
+	private String disease;
 	private String nomsalutation;
 	private String nomname;
 	private String nomrelation;
@@ -104,6 +105,13 @@ public class apollo_proposal_pojo {
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
 	}
+	
+	public String getDisease() {
+		return disease;
+	}
+	public void setDisease(String disease) {
+		this.disease = disease;
+	}
 	public String getNomsalutation() {
 		return nomsalutation;
 	}
@@ -175,9 +183,9 @@ public class apollo_proposal_pojo {
 		return "apollo_proposal_pojo [salutation=" + salutation + ", fullname=" + fullname + ", dob=" + dob
 				+ ", occupation=" + occupation + ", height=" + height + ", height1=" + height1 + ", weight=" + weight
 				+ ", mobile=" + mobile + ", email=" + email + ", address=" + address + ", city=" + city + ", state="
-				+ state + ", pincode=" + pincode + ", nomsalutation=" + nomsalutation + ", nomname=" + nomname
-				+ ", nomrelation=" + nomrelation + ", nommobile=" + nommobile + ", nomdob=" + nomdob
-				+ ", nomoccupation=" + nomoccupation + ", nomemail=" + nomemail + ", nomaddress=" + nomaddress
+				+ state + ", pincode=" + pincode + ", disease=" + disease + ", nomsalutation=" + nomsalutation
+				+ ", nomname=" + nomname + ", nomrelation=" + nomrelation + ", nommobile=" + nommobile + ", nomdob="
+				+ nomdob + ", nomoccupation=" + nomoccupation + ", nomemail=" + nomemail + ", nomaddress=" + nomaddress
 				+ ", nomcity=" + nomcity + ", nomstate=" + nomstate + ", nompincode=" + nompincode + "]";
 	}
 	
