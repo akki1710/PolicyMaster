@@ -10,7 +10,6 @@
 <body>
 <form action="UserManag" method="get">
 <%rp=(ServeletBean.RegPJ)session.getAttribute( "rp" ); %>
-UID: <input type="text" name="UID" value="<%=rp.getUID() %>"  required=" "/><br>
 Uname: <input type="text" name="Uname" value="<%=rp.getUname() %>" required=" "/><br>
 Name: <input type="text" name="Name" value="<%=rp.getName() %>" required=" "/><br>
 City: <input type="text" name="City" value="<%=rp.getCity() %>" required=" "/><br>

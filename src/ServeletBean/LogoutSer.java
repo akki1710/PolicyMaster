@@ -38,7 +38,6 @@ public class LogoutSer extends HttpServlet {
 		    out.println("alert('You are successfully logged out!');");
 		   out.println("</script>"); 
            System.out.println("U r logged out: ");
-           
            out.close();  
 	}
 

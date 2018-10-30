@@ -15,7 +15,7 @@ public class Db {
 			e.printStackTrace();
 		}
 		
-		String jdbc_url = "jdbc:mysql://localhost/db";
+		String jdbc_url = "jdbc:mysql://localhost/p_master";
 		Connection con = DriverManager.getConnection(jdbc_url,"root","akki");
 		return con;
 		

@@ -221,7 +221,7 @@ body {
 																				class="label_text">Name</label>
 																		</div>
 																		<input type="text" class="form-control" id="name"
-																			name="fullname" value="<%=ap.getFullname() %>" placeholder="" required="required">
+																			name="fullname" placeholder="" required="required">
 																	</div>
 																</div>
 																<div class="col-md-5 fleft">

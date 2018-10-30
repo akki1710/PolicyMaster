@@ -71,7 +71,6 @@ public class Rel_Pol_Status extends HttpServlet {
 		 PrintWriter pw = response.getWriter();
 		 HttpSession session=request.getSession(); 
 		 String rel_proposal_num=(String) session.getAttribute("rel_two_proposal_num");
-		 System.out.println("rel_proposal_num in rel_pol_status: "+rel_proposal_num);
 		 String rel_premium=(String) session.getAttribute("rel_two_premium");
 		 apollo_proposal_pojo app = (apollo_proposal_pojo) session.getAttribute("app");
 		 String FullName=app.getFullname();
@@ -124,31 +123,14 @@ public class Rel_Pol_Status extends HttpServlet {
 				 System.out.println(policy_num);
 				 session.setAttribute("policy_num", policy_num);
 				 
-				 Integer uid=(Integer) session.getAttribute("uid");
-				 String uname=(String) session.getAttribute("uname");
 				 String health_policy=(String) session.getAttribute("health_policy");
 				 System.out.println("rel_proposal_num: "+rel_proposal_num);
 				 System.out.println("rel_premium: "+rel_premium);
 				 System.out.println("health_policy: "+health_policy);
 				 
 				 Connection con = Db.myGetConnection();
-				 if(uid!=null) {
-					 String s="insert into final_details(UID,Uname,ProposalNo, ApprovePolNo,TotalPremium,PolicyName,FullName,Email,Mobile) values(?,?,?,?,?,?,?,?,?)";
-						PreparedStatement stmt = con.prepareStatement(s);
-						stmt.setInt(1, uid);
-						stmt.setString(2, uname);
-						stmt.setString(3, rel_proposal_num);
-						stmt.setString(4, policy_num);
-						stmt.setString(5, rel_premium);
-						stmt.setString(6, health_policy);
-						stmt.setString(7, FullName);
-						stmt.setString(8, Email);
-						stmt.setString(9, Mobile);
-					 stmt.executeUpdate();
-					 stmt.close();
-				 }
-				 else {
-					 String s="insert into shri_final_details(ProposalNo, ApprovePolNo,TotalPremium,PolicyName,FullName,Email,Mobile) values(?,?,?,?,?,?,?)";
+				 if(Mobile!=null) {
+					 String s="insert into final_details(ProposalNo, ApprovePolNo,TotalPremium,PolicyName,FullName,Email,Mobile) values(?,?,?,?,?,?,?)";
 						PreparedStatement stmt = con.prepareStatement(s);
 						stmt.setString(1, rel_proposal_num);
 						stmt.setString(2, policy_num);
@@ -157,8 +139,8 @@ public class Rel_Pol_Status extends HttpServlet {
 						stmt.setString(5, FullName);
 						stmt.setString(6, Email);
 						stmt.setString(7, Mobile);
-						 stmt.executeUpdate();
-						 stmt.close();
+					 stmt.executeUpdate();
+					 stmt.close();
 				 }
 				 response.sendRedirect("rel_return.jsp");
 				
@@ -168,21 +150,9 @@ public class Rel_Pol_Status extends HttpServlet {
 				 con.close();
 				
 				
-		 } catch (ParserConfigurationException e) {
-				// TODO Auto-generated catch block
+		 } catch (Exception e) {
 				e.printStackTrace();
-			} catch (JAXBException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SOAPException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (NullPointerException e) {
-				e.printStackTrace();
-			}
+			} 
 		 if(session!=null) {
 			 session.removeAttribute("health_policy");
 			 session.removeAttribute("rel_two_premium");

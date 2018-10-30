@@ -99,12 +99,18 @@ public class main {
 		String c[]=b[1].split("\\)");
 		String d[]=b[2].split("\\)");
 		String e[]=c[1].split(",");
-
-		System.out.println(b[0]);
+		String f[]=d[1].split(",");
+		String g[]=b[3].split("\\)");
+		String h[]=g[1].split(",");
+		String i[]=b[4].split("\\)");
+		
 		System.out.println("c[0]: "+c[0]);
-		System.out.println("c[1]: "+c[1]);
-		System.out.println("d[0]: "+d[0]);
 		System.out.println("e[1]: "+e[1]);
+		System.out.println("d[0]: "+d[0]);
+		System.out.println("f[1]: "+f[1]);
+		System.out.println("g[0]: "+g[0]);
+		System.out.println("h[1]: "+h[1]);
+		System.out.println("i[0]: "+i[0]);
 		
 		for(int i=0;i<c.length;i++) {
 			System.out.println(c[i]);
@@ -399,31 +405,31 @@ public class main {
 	public String[] religare_disease(String disease) {
 		String [] diseases=new String[3];
 		if(disease.equals("asthma,")) {
-			diseases[0]="H104";
+			diseases[0]="H105";
 			diseases[1]="HEDCFLEAFFOUR";
 			diseases[2]="YES";
 			return diseases;
 		}
 		else if(disease.equals("diabetes,")) {
-			diseases[0]="H106";
+			diseases[0]="H107";
 			diseases[1]="HEDCFLEAFSIX";
 			diseases[2]="YES";
 			return diseases;
 		}
 		else if(disease.equals("heartailments,")) {
-			diseases[0]="H102";
+			diseases[0]="H103";
 			diseases[1]="HEDCFLEAFTWO";
 			diseases[2]="YES";
 			return diseases;
 		}
 		else if(disease.equals("hypertension,")) {
-			diseases[0]="H103";
+			diseases[0]="H104";
 			diseases[1]="HEDCFLEAFTHREE";
 			diseases[2]="YES";
 			return diseases;
 		}
 		else if(disease.equals("thyroid,")) {
-			diseases[0]="H105";
+			diseases[0]="H106";
 			diseases[1]="HEDCFLEAFFIVE";
 			diseases[2]="YES";
 			return diseases;
@@ -434,6 +440,42 @@ public class main {
 			return diseases;
 		}
 		
+	}
+	public Map<String,String>religareMembers(String member){
+		Map< String,String> hm = new HashMap<>();
+		try {
+		String z=member.concat(",");
+		String b[]=z.split("\\(");
+		String c[]=b[1].split("\\)");
+		String cover_type=null;
+		
+		
+		
+			if(c[1].equals(", spouse")) {
+				
+				cover_type="FAMILYFLOATER";
+				
+
+			}
+			else {
+				cover_type="INDIVIDUAL";
+			}
+			hm.put("cover_type", cover_type);
+			
+			/*System.out.println("member_self: "+hm.get("member_self"));
+			System.out.println("age_self: "+hm.get("age_self"));
+			System.out.println("member_spouse: "+hm.get("member_spouse"));
+			System.out.println("age_spouse: "+hm.get("age_spouse"));
+			System.out.println("cover_type: "+hm.get("cover_type"));
+			System.out.println("member_son: "+hm.get("member_son"));
+			System.out.println("age_son: "+hm.get("age_son"));
+			System.out.println("member_daughter: "+hm.get("member_daughter"));
+			System.out.println("age_daughter: "+hm.get("age_daughter"));*/
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return hm;
 	}
 	//---------------------apollo----------------------
 	

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -44,47 +45,48 @@ public class LogServlet extends HttpServlet {
 		response.setContentType("text/html");  
         PrintWriter out = response.getWriter(); 
         
-		String u = request.getParameter("username");
+		String u = request.getParameter("Mobile");
 		String p = request.getParameter("pass");
 		
 		
 		if(LoginDao.valiLog(u,p)) {
 			 boolean status = false;
-			HttpSession session=request.getSession();
-			RequestDispatcher rd=request.getRequestDispatcher("user.jsp"); 
-			rd.include(request, response);
-			 Connection con;
-			try {
-				con = Db.myGetConnection();
-				 PreparedStatement ps = con.prepareStatement("select UID from reg where Uname=? and Password=?");
-				 ps.setString(1,u);
-				 ps.setString(2,p);
-				 ResultSet rs = ps.executeQuery();
-				 status = rs.next();
-				 int uid = rs.getInt(1);
-				session.setAttribute("uname",u);  
-				session.setAttribute("uid",uid);   
-				
+				HttpSession session=request.getSession();
+				RequestDispatcher rd=request.getRequestDispatcher("user.jsp"); 
+				rd.include(request, response);
+				 Connection con;
+				try {
+					con = Db.myGetConnection();
+					 PreparedStatement ps = con.prepareStatement("select Mobile,Fname from reg where Mobile=? and Password=?");
+					 ps.setString(1,u);
+					 ps.setString(2,p);
+					 ResultSet rs = ps.executeQuery();
+					 status = rs.next();
+					 String Mobile = rs.getString(1);
+					 String Fname = rs.getString(2);
+					session.setAttribute("Fname",Fname);  
+					session.setAttribute("Mobile",Mobile);   
+					
 
-				out.println("<script type=\"text/javascript\">");
+					out.println("<script type=\"text/javascript\">");
+					
+					   out.println("alert('Successfully login');");
+					   out.println("</script>");
+					    
+					   System.out.println("Welcome: "+ Fname+" Mobile: "+Mobile);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				 
 				
-				   out.println("alert('Successfully login');");
-				   out.println("</script>");
-				    
-				   System.out.println("Welcome: "+ u+" UID: "+uid);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			 
+				
 			
-			
-		
-		   /*out.println("<script type=\"text/javascript\">");
-		   out.println("location='index.jsp';");
-		    out.println("alert('Successfully login');");
-		   out.println("</script>");*/
-		    
+			   /*out.println("<script type=\"text/javascript\">");
+			   out.println("location='index.jsp';");
+			    out.println("alert('Successfully login');");
+			   out.println("</script>");*/
+			    
 		    }
 		
 		    	
@@ -95,8 +97,7 @@ public class LogServlet extends HttpServlet {
 			   
 			 rd.include(request, response);//method may be include or forward
 		    out.println("<script type=\"text/javascript\">");
-		    out.println("alert('User name or password incorrect');");
-		    
+		    out.println("alert('MobileNo. or password incorrect');");
 		   out.println("</script>");
 		   }
 		

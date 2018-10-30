@@ -184,7 +184,7 @@ public class Servlet2 extends HttpServlet {
 			
         try {
 			Connection con = Db.myGetConnection();
-			String s="insert into main_data(RegNo,Manufacturer,Model,FuelType,Varient,RegYear,Insurer,AnyClaim,ExpiryDate,name,email,phoneno) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+			String s="insert into main_data(RegNo,Manufacturer,Model,FuelType,Varient,RegYear,Insurer,AnyClaim,ExpiryDate,name,email,Mobile) values(?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(s);
 			stmt.setString(1, Car_RegNo);
 			stmt.setString(2, Manufacturer);
@@ -199,12 +199,18 @@ public class Servlet2 extends HttpServlet {
 			stmt.setString(11, Email);
 			stmt.setString(12, Mobile);
 			
-			response.sendRedirect("shri");
 			stmt.executeUpdate();
 			stmt.close();
 			
+			String s1="insert into reg(Name,Email,Mobile) values(?,?,?)";
+			PreparedStatement statement = con.prepareStatement(s1);
+			statement.setString(1, Fullname);
+			statement.setString(2, Email);
+			statement.setString(3, Mobile);
 			
-			
+			response.sendRedirect("shri");
+			statement.executeUpdate();
+			statement.close();
 			
 			
 		} catch (SQLException e) {
@@ -346,7 +352,7 @@ public class Servlet2 extends HttpServlet {
 			
 			try {
 				Connection con = Db.myGetConnection();
-				String s2="insert into main_data(RegNo,Manufacturer,Model,Varient,RegYear,Insurer,AnyClaim,ExpiryDate,name,email,phoneno) values(?,?,?,?,?,?,?,?,?,?,?)";
+				String s2="insert into main_data(RegNo,Manufacturer,Model,Varient,RegYear,Insurer,AnyClaim,ExpiryDate,name,email,Mobile) values(?,?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement stmt2 = con.prepareStatement(s2);
 				stmt2.setString(1, Bike_RegNo);
 				stmt2.setString(2, Bike_Manufacturer);
@@ -359,11 +365,18 @@ public class Servlet2 extends HttpServlet {
 				stmt2.setString(9, Fullname);
 				stmt2.setString(10, Email);
 				stmt2.setString(11, Mobile);
-				
-				
-				response.sendRedirect("shri");
 				stmt2.executeUpdate();
 				stmt2.close();
+				
+				String s1="insert into reg(Name,Email,Mobile) values(?,?,?)";
+				PreparedStatement statement = con.prepareStatement(s1);
+				statement.setString(1, Fullname);
+				statement.setString(2, Email);
+				statement.setString(3, Mobile);
+				
+				response.sendRedirect("shri");
+				statement.executeUpdate();
+				statement.close();
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

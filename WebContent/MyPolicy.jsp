@@ -181,8 +181,6 @@ hr {
 								<thead>
 									<tr class="td">
 										<th class="th" width=4%>#</th>
-										<th>User ID</th>
-										<th>User Name</th>
 										<th>Full Name</th>
 										<th>Email</th>
 										<th>Mobile</th>
@@ -195,12 +193,11 @@ hr {
 										</tr>
 										
 								</thead>
-								<%for(int i=0;i<rp2.size();i++) {%>
+								<%try{
+								for(int i=0;i<rp2.size();i++) {%>
 								<thead>
 									<tr class="td">
 										<th class="th" width=4%>#</th>
-										<th><%=rp2.get(i).getUID() %></th>
-										<th><%=rp2.get(i).getUname() %></th>
 										<th><%=rp2.get(i).getName() %></th>
 										<th><%=rp2.get(i).getEmail() %></th>
 										<th><%=rp2.get(i).getPhoneno() %></th>
@@ -213,7 +210,8 @@ hr {
 										</tr>
 										
 								</thead>
-								<%}%>
+								<%}}catch (Exception e){
+								 }%>
 							</table>
 							
 						</div>

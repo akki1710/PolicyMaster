@@ -14,7 +14,7 @@ PolicyNumber: <%= (String) session.getAttribute("policy_num")%><br>
 	}%>
 
 </form>
-<form action="Rel_Pol_Status1" method="post">
+<form action="" method="post">
 <input type="submit" value="Click here for Policy URL"> 
 </form>
 </body>

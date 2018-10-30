@@ -147,7 +147,7 @@ public class Religare_Main {
 		policy.setAddOns("CAREWITHNCB");
 		policy.setBusinessTypeCd("NEWBUSINESS");
 		policy.setBaseProductId("12001002");
-		policy.setBaseAgentId("20572800");
+		policy.setBaseAgentId("20008325");
 		policy.setCoverType("INDIVIDUAL");
 		policy.getpartyDOList().add(partyDOList);
 		policy.getpartyDOList().add(partyDOList1);

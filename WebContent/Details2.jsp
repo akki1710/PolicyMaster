@@ -357,7 +357,7 @@ font-family: 'Lato', sans-serif;
 
 								    
 								<label class="Car-text">Registration Number : </label>
-				                     <input type="name"  name="Car_RegNo"  id="cartextbox"s placeholder=" E.G.: DL01AB1234"  pattern="^[a-z|A-Z]{2}[0-9]{1,2}[a-z|A-Z]{1,2}[0-9]{1,4}$"required=""/>
+				                     <input type="name"  name="Car_RegNo" onkeydown="upperCaseF(this)" id="cartextbox"s placeholder=" E.G.: DL01AB1234"  pattern="^[A-Z]{2}[0-9]{1,2}[A-Z]{1,2}[0-9]{1,4}$"required=""/>
 				                        	
 				                    </div>
 												
@@ -515,7 +515,13 @@ font-family: 'Lato', sans-serif;
             <!-- <script src="assets/js/placeholder.js"></script>
         <![endif] --> 
         
-        
+        <script>
+        function upperCaseF(a){
+            setTimeout(function(){
+                a.value = a.value.toUpperCase();
+            }, 1);
+        }
+        </script>
     </body>
 
 </html>

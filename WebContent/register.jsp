@@ -120,26 +120,13 @@ font-family: 'Lato', sans-serif;
 <form name="myform" action="BeanRegis" id="loginForm" method="post">
 <ul class="fields">
 <div class="Refer_w3l">
-	<li>	
-		<label class="w3ls-opt">User Name :<span class="w3ls-star"> * </span></label>
-		<div class="w3ls-name">	
-			<input type="text" name="Uname"  placeholder="user name" required=" "/>
-		</div>
-	</li>
-	<li>	
-		<label class="w3ls-opt">First Name :<span class="w3ls-star"> * </span></label>
-		<div class="w3ls-name">	
-			<input type="text" name="Fname"  placeholder="First Name" required=" "/>
-		</div>
-	</li>
-	<li>	
-		<label class="w3ls-opt">Last Name :<span class="w3ls-star"> * </span></label>
-		<div class="w3ls-name">	
-			<input type="text" name="Lname"  placeholder="Last Name" required=" "/>
-		</div>
-	</li>
 	
-	
+	<li>	
+		<label class="w3ls-opt">Full Name :<span class="w3ls-star"> * </span></label>
+		<div class="w3ls-name">	
+			<input type="text" name="name"  placeholder="Full Name" required=" "/>
+		</div>
+	</li>
 						<li>
 							<label class="w3ls-opt">Birth Date :<span class="w3ls-star"> * </span></label>	
 							<div class="w3ls-text w3ls-name">
@@ -245,8 +232,8 @@ font-family: 'Lato', sans-serif;
 				
 				</span>
 				<span class="agile_sub-label xxx">
-					<select class="month" id="state" name="state">
-					<option value="">State</option>
+					<select class="month" id="state" name="city">
+					<option value="">City</option>
 					</select>
 					<script language="javascript">
 						populateCountries("country", "state");

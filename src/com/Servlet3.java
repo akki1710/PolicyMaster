@@ -154,7 +154,7 @@ public class Servlet3 extends HttpServlet {
 			 
 	        try {
 				Connection con = Db.myGetConnection();
-				String s="insert into details(title, Owner_Name, pno, email, Car_Registration_Address, sqlDate, nomines_name, nomines_relation, selectage, Car_RegNo, engine_number, chassis_number, month1, year1, selectime, driving, evening, financed) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				String s="insert into details(title, Owner_Name, Mobile, email, Car_Registration_Address, sqlDate, nomines_name, nomines_relation, selectage, Car_RegNo, engine_number, chassis_number, month1, year1, selectime, driving, evening, financed) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement stmt = con.prepareStatement(s);
 			
 				stmt.setString(1, title);
